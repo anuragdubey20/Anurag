@@ -1,0 +1,92 @@
+Q.1]
+mysql> INSERT INTO Student.tblParents (parent_id, parents_name, city, age, annual_income, occupation, emailid)VALUES (1, 'John Smith', 'Delhi', 40, 800000, 'Engineer', 'john.smith@example.com'), (2, 'Emily Johnson', 'Mumbai', 35, 650000, 'Doctor', 'emily.johnson@example.com'), (3, 'Michael Brown', 'Chennai', 55, 700000, 'Professor', 'michael.brown@example.com'), (4, 'Emma Davis', 'Ahmedabad', 48, 550000, 'Teacher', 'emma.davis@example.com'), (5, 'Daniel Wilson', 'Delhi', 42, 900000, 'Lawyer', 'daniel.wilson@example.com'), (6, 'Olivia Taylor', 'Mumbai', 32, 400000, 'Architect', 'olivia.taylor@example.com'), (7, 'Matthew Anderson', 'Bangalore', 50, 750000, 'Businessman', 'matthew.anderson@example.com'), (8, 'Ava Martinez', 'Chennai', 47, 600000, 'Engineer', 'ava.martinez@example.com'), (9, 'William Thompson', 'Ahmedabad', 39, 550000, 'Doctor', 'william.thompson@example.com'), (10, 'Sophia Clark', 'Mumbai', 43, 700000, 'Professor', 'sophia.clark@example.com'), (11, 'James Garcia', 'Delhi', 37, 800000, 'Teacher', 'james.garcia@example.com'), (12, 'Isabella Hernandez', 'Chennai', 52, 650000, 'Lawyer', 'isabella.hernandez@example.com'), (13, 'Benjamin Martinez', 'Ahmedabad', 34, 400000, 'Architect', 'benjamin.martinez@example.com'), (14, 'Mia Wilson', 'Bangalore', 49, 900000, 'Businesswoman', 'mia.wilson@example.com'), (15, 'Alexander Davis', 'Delhi', 45, 550000, 'Engineer', 'alexander.davis@example.com'), (16, 'Charlotte Thomas', 'Mumbai', 36, 600000, 'Doctor', 'charlotte.thomas@example.com'), (17, 'Jacob Rodriguez', 'Chennai', 51, 750000, 'Professor', 'jacob.rodriguez@example.com'), (18, 'Lily Lee', 'Ahmedabad', 38, 550000, 'Teacher', 'lily.lee@example.com'), (19, 'Ethan Anderson', 'Mumbai', 44, 700000, 'Lawyer', 'ethan.anderson@example.com'), (20, 'Grace Taylor', 'Delhi', 33, 800000, 'Architect','grace.taylor@example.com');
+Query OK, 20 rows affected (0.08 sec)
+Records: 20  Duplicates: 0  Warnings: 0
+
+mysql> UPDATE Student.tblParents
+    -> SET emailid = 'NA';
+Query OK, 20 rows affected (0.05 sec)
+Rows matched: 20  Changed: 20  Warnings: 0
+
+mysql> SELECT COUNT(*) AS num_parents FROM Student.tblParents WHERE annual_income > 600000;
++-------------+
+| num_parents |
++-------------+
+|          12 |
++-------------+
+1 row in set (0.02 sec)
+
+mysql> SELECT * FROM Student.tblParents WHERE city IN ('Ahmedabad', 'Delhi', 'Mumbai', 'Chennai', 'Bangalore');
++-----------+--------------------+-----------+------+---------------+---------------+---------+
+| parent_id | parents_name       | city      | age  | annual_income | occupation    | emailid |
++-----------+--------------------+-----------+------+---------------+---------------+---------+
+|         1 | John Smith         | Delhi     |   40 |     800000.00 | Engineer      | NA      |
+|         2 | Emily Johnson      | Mumbai    |   35 |     650000.00 | Doctor        | NA      |
+|         3 | Michael Brown      | Chennai   |   55 |     700000.00 | Professor     | NA      |
+|         4 | Emma Davis         | Ahmedabad |   48 |     550000.00 | Teacher       | NA      |
+|         5 | Daniel Wilson      | Delhi     |   42 |     900000.00 | Lawyer        | NA      |
+|         6 | Olivia Taylor      | Mumbai    |   32 |     400000.00 | Architect     | NA      |
+|         7 | Matthew Anderson   | Bangalore |   50 |     750000.00 | Businessman   | NA      |
+|         8 | Ava Martinez       | Chennai   |   47 |     600000.00 | Engineer      | NA      |
+|         9 | William Thompson   | Ahmedabad |   39 |     550000.00 | Doctor        | NA      |
+|        10 | Sophia Clark       | Mumbai    |   43 |     700000.00 | Professor     | NA      |
+|        11 | James Garcia       | Delhi     |   37 |     800000.00 | Teacher       | NA      |
+|        12 | Isabella Hernandez | Chennai   |   52 |     650000.00 | Lawyer        | NA      |
+|        13 | Benjamin Martinez  | Ahmedabad |   34 |     400000.00 | Architect     | NA      |
+|        14 | Mia Wilson         | Bangalore |   49 |     900000.00 | Businesswoman | NA      |
+|        15 | Alexander Davis    | Delhi     |   45 |     550000.00 | Engineer      | NA      |
+|        16 | Charlotte Thomas   | Mumbai    |   36 |     600000.00 | Doctor        | NA      |
+|        17 | Jacob Rodriguez    | Chennai   |   51 |     750000.00 | Professor     | NA      |
+|        18 | Lily Lee           | Ahmedabad |   38 |     550000.00 | Teacher       | NA      |
+|        19 | Ethan Anderson     | Mumbai    |   44 |     700000.00 | Lawyer        | NA      |
+|        20 | Grace Taylor       | Delhi     |   33 |     800000.00 | Architect     | NA      |
++-----------+--------------------+-----------+------+---------------+---------------+---------+
+20 rows in set (0.00 sec)
+
+mysql> SELECT *FROM Student.tblParents WHERE annual_income < 500000 OR age > 45;
++-----------+--------------------+-----------+------+---------------+---------------+---------+
+| parent_id | parents_name       | city      | age  | annual_income | occupation    | emailid |
++-----------+--------------------+-----------+------+---------------+---------------+---------+
+|         3 | Michael Brown      | Chennai   |   55 |     700000.00 | Professor     | NA      |
+|         4 | Emma Davis         | Ahmedabad |   48 |     550000.00 | Teacher       | NA      |
+|         6 | Olivia Taylor      | Mumbai    |   32 |     400000.00 | Architect     | NA      |
+|         7 | Matthew Anderson   | Bangalore |   50 |     750000.00 | Businessman   | NA      |
+|         8 | Ava Martinez       | Chennai   |   47 |     600000.00 | Engineer      | NA      |
+|        12 | Isabella Hernandez | Chennai   |   52 |     650000.00 | Lawyer        | NA      |
+|        13 | Benjamin Martinez  | Ahmedabad |   34 |     400000.00 | Architect     | NA      |
+|        14 | Mia Wilson         | Bangalore |   49 |     900000.00 | Businesswoman | NA      |
+|        17 | Jacob Rodriguez    | Chennai   |   51 |     750000.00 | Professor     | NA      |
++-----------+--------------------+-----------+------+---------------+---------------+---------+
+9 rows in set (0.00 sec)
+
+Q.2]
+mysql> create table Company(company_Id int PRIMARY KEY,company_name varchar(255),company_city varchar(255));
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> insert into Company (company_Id,company_name,company_city)values (1,'Dominos','Los Angeles'), (2,'Pizza Hut','San Francisco'),(3,'Papa Joins','San Deigo'), (4,'Ah Pizz','Fremont'), (5,'Nino Pizza','Las Vegas'),(6,'Pizzeria','Boston'), (7,'Chunck e cheese','Chicago');
+
+Query OK, 7 rows affected (0.03 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+mysql> create table Items(item_id int PRIMARY KEY, item_name varchar(255), units_sold int, company_Id int);
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> insert into Items (item_id,item_name,units_sold,company_Id) value(1,'Large Pizza',5,2), (2,'Garlic Knots',6,3),(3,'Large Pizza',3,3),(4,'Medium Pizza',8,4), (5,'Breadsticks',7,1), (6,'Medium Pizza',11,1), (7,'Small Pizza',9,6), (8,'Small Pizza',6,7);
+
+Query OK, 8 rows affected (0.08 sec)
+Records: 8  Duplicates: 0  Warnings: 0
+
+mysql> select c.company_name,c.company_city,i.item_name,i.units_sold from Company c JOIN Items i where c.company_Id = i.company_Id;
++-----------------+---------------+--------------+------------+
+| company_name    | company_city  | item_name    | units_sold |
++-----------------+---------------+--------------+------------+
+| Pizza Hut       | San Francisco | Large Pizza  |          5 |
+| Papa Joins      | San Deigo     | Garlic Knots |          6 |
+| Papa Joins      | San Deigo     | Large Pizza  |          3 |
+| Ah Pizz         | Fremont       | Medium Pizza |          8 |
+| Dominos         | Los Angeles   | Breadsticks  |          7 |
+| Dominos         | Los Angeles   | Medium Pizza |         11 |
+| Pizzeria        | Boston        | Small Pizza  |          9 |
+| Chunck e cheese | Chicago       | Small Pizza  |          6 |
++-----------------+---------------+--------------+------------+
+8 rows in set (0.00 sec)
